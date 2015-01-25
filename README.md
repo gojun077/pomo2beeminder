@@ -1,1 +1,1 @@
-repo for scripts sending pomodoro data to Beeminder for user gojun077
+a bash script that sends data to a Beeminder pomodoro goal
