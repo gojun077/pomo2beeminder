@@ -21,25 +21,22 @@ FROM=gojun077@gmail.com
 TO=bot@beeminder.com
 SUBJ="gojun077/pomodoro"
 
-echo -n "Did you successfully complete your pomodoro?(y/n)"
-select ans in ("y" "n"); do
-  case $ans in
-    "y")
-        if [ -f "/usr/bin/smtp-cli" ]; then
-          smtp-cli --verbose --host=$HOST --enable-auth --user=$USER \
-                   --pass=$PW --from=$FROM --to=$TO --subject=$SUBJ \
-                   --body-plain='^ 1 "sent by pomo2beeminder.sh"' \
-                   --charset=UTF-8
-        else
-          echo -e "Please install 'smtp-cli' package! Aborting.\n" 1>&2
-          exit 1
-        fi
-        ;;
-    "n")
-        echo "Concentrate harder next time!"
-        break
-        ;;
-    *)
-        error "Unexpected input '$ans'"
-        ;;
-  esac
+echo "Did you successfully complete your pomodoro?(y/n)"
+read ans
+case $ans in
+  "y")
+      if [ -f "/usr/bin/smtp-cli" ]; then
+        smtp-cli --verbose --host=$HOST --enable-auth --user=$USER --pass=$PW --from=$FROM --to=$TO --subject=$SUBJ --body-plain='^ 1 "sent by pomo2beeminder.sh"' --charset=UTF-8
+      else
+        echo -e "Please install 'smtp-cli' package! Aborting.\n" 1>&2
+        exit 1
+      fi
+      ;;
+  "n")
+      echo "Concentrate harder next time!"
+      ;;
+  *)
+      echo "Please answer y or n"
+      ;;
+esac
+
