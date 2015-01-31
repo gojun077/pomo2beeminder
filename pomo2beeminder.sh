@@ -1,14 +1,16 @@
 #!/bin/bash
 #===========================================
 # pomo2beeminder.sh created 2015.01.25
+# https://github.com/gojun077/pomo2beeminder
 # Jun Go gojun077@gmail.com
 #===========================================
 # This script is designed to be launched by xfce4-timer-plugin
-# after a 25-minute pomodoro timer completes. The user will be
-# asked whether or not the pomodoro was completed without
-# distractions. If the answer is 'y', the script will launch
-# 'smtp-cli' which will send an email to the Beeminder bot
-# to increment a pomodoro graph for a goal named 'pomodoro'
+# or pystopwatch after a 25-minute pomodoro timer completes.
+# The user will be asked whether or not the pomodoro was completed
+# successfully (without distractions). If the answer is 'y', the
+# script will launch 'smtp-cli' which will send an email to the
+# Beeminder bot to increment a Beeminder graph for a 'do more'
+# goal named 'pomodoro'
 #
 # This script has been tested with smtp-cli 3.6 and 3.7
 # https://github.com/mludvig/smtp-cli (3.7)
