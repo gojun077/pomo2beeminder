@@ -23,7 +23,7 @@ FROM=gojun077@gmail.com
 TO=bot@beeminder.com
 SUBJ="gojun077/pomodoro"
 
-$ans = z #initialize variable 'ans'
+ans=z  #initialize variable 'ans'
 
 while [[ "$ans" != "y" || "$ans" != "n" ]]; do
   echo "Did you successfully complete your pomodoro?(y/n)"
