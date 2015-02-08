@@ -23,22 +23,28 @@ FROM=gojun077@gmail.com
 TO=bot@beeminder.com
 SUBJ="gojun077/pomodoro"
 
-echo "Did you successfully complete your pomodoro?(y/n)"
-read ans
-case $ans in
-  "y")
-      if [ -f "/usr/bin/smtp-cli" ]; then
-        smtp-cli --verbose --host=$HOST --enable-auth --user=$USER --pass=$PW --from=$FROM --to=$TO --subject=$SUBJ --body-plain='^ 1 "sent by pomo2beeminder.sh"' --charset=UTF-8
-      else
-        echo -e "Please install 'smtp-cli' package! Aborting.\n" 1>&2
-        exit 1
-      fi
-      ;;
-  "n")
-      echo "Concentrate harder next time!"
-      ;;
-  *)
-      echo "Please answer y or n"
-      ;;
-esac
+$ans = z #initialize variable 'ans'
 
+while [[ "$ans" != "y" || "$ans" != "n" ]]; do
+  echo "Did you successfully complete your pomodoro?(y/n)"
+  read ans
+
+  case $ans in
+    "y")
+         if [ -f "/usr/bin/smtp-cli" ]; then
+           smtp-cli --verbose --host=$HOST --enable-auth --user=$USER --pass=$PW --from=$FROM --to=$TO --subject=$SUBJ --body-plain='^ 1 "sent by pomo2beeminder.sh"' --charset=UTF-8
+           break
+         else
+           echo -e "Please install 'smtp-cli' package! Aborting.\n" 1>&2
+           exit 1
+         fi
+         ;;
+    "n")
+         echo "Concentrate harder next time!"
+         break
+         ;;
+    *)
+         echo "Please answer y or n"
+         ;;
+  esac
+done
