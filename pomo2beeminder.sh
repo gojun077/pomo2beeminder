@@ -16,9 +16,10 @@
 # https://github.com/mludvig/smtp-cli (3.7)
 # http://www.logix.cz/michal/devel/smtp-cli/ (3.6)
 
+POMPATH=$HOME/Documents/pomo2beeminder
 HOST=smtp.gmail.com
 USER=gojun077@gmail.com
-PW=$(<~/Documents/MyProjects/pomodoro/pass.txt)
+PW=$(<$POMPATH/pass.txt)
 FROM=gojun077@gmail.com
 TO=bot@beeminder.com
 SUBJ="gojun077/pomodoro"
