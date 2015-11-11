@@ -35,7 +35,7 @@ while [[ "$ans" != "y" || "$ans" != "n" ]]; do
          if [ -f "/usr/bin/smtp-cli" ]; then
            smtp-cli --verbose --host=$HOST --enable-auth --user=$USER \
                     --pass="$PW" --from=$FROM --to=$TO --subject=$SUBJ \
-                    --body-plain='^ 1 "sent by pomo2beeminder.sh"'
+                    --body-plain='^ 1 "sent by pomo2beeminder.sh"' \
                     --charset=UTF-8
            break
          else
