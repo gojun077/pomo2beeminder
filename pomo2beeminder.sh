@@ -45,7 +45,7 @@ while [[ "$ans" != "y" || "$ans" != "n" ]]; do
          ;;
     "n")
          echo "Concentrate harder next time!"
-         exit 0 
+         exit 0
          ;;
     *)
          echo "Please answer y or n"
