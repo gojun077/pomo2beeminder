@@ -16,6 +16,11 @@
 # https://github.com/mludvig/smtp-cli (3.7)
 # http://www.logix.cz/michal/devel/smtp-cli/ (3.6)
 
+# USAGE:
+#./pomo2beeminder.sh <num_of_pomodoros>
+# For example, if you completed two 25-minute pomodoros,
+# ./pomo2beeminder.sh 2
+
 POMPATH=$HOME/Documents/pomo2beeminder
 HOST=smtp.gmail.com
 USER=gojun077@gmail.com
@@ -35,7 +40,7 @@ while [[ "$ans" != "y" || "$ans" != "n" ]]; do
          if [ -f "/usr/bin/smtp-cli" ]; then
            smtp-cli --verbose --host=$HOST --enable-auth --user=$USER \
                     --pass="$PW" --from=$FROM --to=$TO --subject=$SUBJ \
-                    --body-plain='^ 1 "sent by pomo2beeminder.sh"' \
+                    --body-plain="^ $1 \"sent by pomo2beeminder.sh\"" \
                     --charset=UTF-8
            exit 0
          else
@@ -45,7 +50,7 @@ while [[ "$ans" != "y" || "$ans" != "n" ]]; do
          ;;
     "n")
          echo "Concentrate harder next time!"
-         exit 0 
+         exit 0
          ;;
     *)
          echo "Please answer y or n"
