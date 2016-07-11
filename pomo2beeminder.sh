@@ -24,7 +24,7 @@
 POMPATH=$HOME/Documents/pomo2beeminder
 HOST=smtp.gmail.com
 USER=gojun077@gmail.com
-PW=$(<$POMPATH/pass.txt)
+PW=$(<"$POMPATH"/pass.txt)
 FROM=gojun077@gmail.com
 TO=bot@beeminder.com
 SUBJ="gojun077/pomodoro"
